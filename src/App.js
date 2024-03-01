@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import SignUp from "./components/SignUp";
+import ErrorPage from "./components/404page";
+import HomeScreen from "./components/HomeScreen";
+import LoginScreen from "./components/LoginScreen";
+import GroupChat from "./components/GroupChat";
+import ManageUser from "./components/ManageUsers";
+import ManageDocument from "./components/ManageDocuments";
+import EditPage from "./components/EditPage";
+import WelcomePage from "./components/WelcomePage";
+import UploadSharing from "./components/UploadSharing";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" Component={HomeScreen} />
+        <Route path="*" Component={ErrorPage} />
+        <Route path="/login" Component={LoginScreen} />
+        <Route path="/signup" Component={SignUp} />
+        <Route path="/login/login-success" Component={WelcomePage} />
+        <Route path="/login/login-success/group-chat" Component={GroupChat} />
+        <Route path="/login/login-success/manage-user" Component={ManageUser} />
+        <Route
+          path="/login/login-success/manage-document"
+          Component={ManageDocument}
+        />
+        <Route path="/edit/:key" Component={EditPage} />
+        <Route path="/share" Component={UploadSharing} />
+      </Routes>
+    </>
   );
 }
 
